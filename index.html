@@ -2,13 +2,34 @@
 <html>
     <head>
         <title>Don't break the chain!</title>
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
     </head>
     <body data-ng-app="dbtc">
 
-        
+        <div class="home"
+            data-ng-controller="homeController">
+
+            <div>
+                <input data-ng-model="model.form.goalTitle"></input>
+                <button data-ng-click="saveGoal( )">Save</button>
+                <button data-ng-click="deleteGoals( )">Delete All</button>
+            </div>
+            
+            <ul>
+                <li data-ng-repeat="g in model.goals"
+                    data-ng-bind="g.title"></li>
+            </ul>
+
+        </div>
 
         <!-- scripts -->
-        <script type="text/javascript" src="js/lib/angular.min.js"></script>
+        <script type="text/javascript" src="js/libs/angular.min.js"></script>
+        <script type="text/javascript" src="js/libs/angular-resource.min.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/controllers/home-controller.js"></script>
+        <script type="text/javascript" src="js/interceptors/auth-interceptor.js"></script>
+        <script type="text/javascript" src="js/models/goal-model.js"></script>
+        <script type="text/javascript" src="js/services/settings-service.js"></script>
+        <script type="text/javascript" src="js/services/transform-service.js"></script>
     </body>
 </html>
