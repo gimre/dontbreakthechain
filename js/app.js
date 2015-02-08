@@ -1,6 +1,17 @@
 ( function ( ) {
     'use strict';
 
-    angular.module( 'dbtc', [ ] );
+    var app = angular.module( 'dbtc', [
+        'ngResource'
+    ] );
+
+    app.config( [
+
+        '$httpProvider',
+
+        function ( $httpProvider ) {
+            $httpProvider.interceptors.push( 'authInterceptor' );
+        }
+    ] );
 
 } )( )
