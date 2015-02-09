@@ -1,0 +1,76 @@
+.content {
+    margin-top: 30px;
+}
+
+.logo {
+    padding: 20px 0;
+}
+
+.menu-trigger {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0;
+    padding: 6px;
+}
+
+.navbar {
+    background-color: #fff;
+    bottom: 0;
+    left: 0;
+    margin-left: -256px;
+    position: fixed;
+    top: 0;
+    width: 256px;
+}
+
+.navmenu {
+    height: 30px;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+.navmenu.open > .overlay {
+    opacity: 0.2;
+    pointer-events: auto;
+}
+
+.navmenu.open > .navbar {
+    margin-left: 0;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-item-icon {
+    bottom: 0;
+    left: 6px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+}
+
+.nav-item-label {
+    padding: 5px 5px 5px 24px;
+}
+
+.overlay {
+    background-color: #000;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+.transitioned {
+    -webkit-transition: all 250ms ease-in-out;
+    -moz-transition: all 250ms ease-in-out;
+    -ms-transition: all 250ms ease-in-out;
+    -o-transition: all 250ms ease-in-out;
+    transition: all 250ms ease-in-out;
+}

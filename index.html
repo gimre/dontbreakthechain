@@ -6,27 +6,54 @@
     </head>
     <body data-ng-app="dbtc">
 
-        <div class="home"
-            data-ng-controller="homeController">
+        <div class="header"></div>
 
-            <div>
-                <input data-ng-model="model.form.goalTitle"></input>
-                <button data-ng-click="saveGoal( )">Save</button>
-                <button data-ng-click="deleteGoals( )">Delete All</button>
-            </div>
+        <div class="content"></div>
+
+        <div class="navmenu"
+            data-ng-controller="goalListController"
+            data-ng-class="{ open: model.isMenuOpen }">
             
-            <ul>
-                <li data-ng-repeat="g in model.goals"
-                    data-ng-bind="g.title"></li>
-            </ul>
+            <div class="menu-trigger"
+                data-ng-click="model.isMenuOpen = true">
+                <img src="img/ic_menu_24px.svg" alt="Opem menu" width="24" height="24">
+            </div>
 
+            <div class="overlay transitioned"
+                data-ng-click="model.isMenuOpen = false"></div>
+            <div class="navbar transitioned">
+
+                <img src="img/logo.png" class="logo" alt="Don't break the chain!" width="256" height="65">
+
+                <div class="nav-item"
+                    data-ng-repeat="g in model.goals">
+                    <img class="nav-item-icon" width="12" height="12"
+                        data-ng-attr-alt="{{ g.title }}"
+                        data-ng-src="model.colors[ g.objectId ]">
+                    <span class="nav-item-label" 
+                        data-ng-bind="g.title">
+                    </span>
+                </div>
+
+                <div>
+                    <button data-ng-click="deleteGoals( )">-- Delete all</button>
+                    <button data-ng-click="model.isDialogOpen = true">+ Create new...</button>
+                    <div class="goal-add-dialog"
+                        data-ng-show="model.isDialogOpen">
+                        <input type="text"
+                            data-ng-model="model.goal.title">
+                        <button data-ng-click="saveGoal( )">OK</button>
+                        <button data-ng-click="model.isDialogOpen = false">Cancel</button>
+                    </div>
+                </div>
+            </div>    
         </div>
 
         <!-- scripts -->
         <script type="text/javascript" src="js/libs/angular.min.js"></script>
         <script type="text/javascript" src="js/libs/angular-resource.min.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
-        <script type="text/javascript" src="js/controllers/home-controller.js"></script>
+        <script type="text/javascript" src="js/controllers/goal-list-controller.js"></script>
         <script type="text/javascript" src="js/interceptors/auth-interceptor.js"></script>
         <script type="text/javascript" src="js/models/goal-model.js"></script>
         <script type="text/javascript" src="js/services/settings-service.js"></script>
