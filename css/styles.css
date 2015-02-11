@@ -41,6 +41,8 @@
 }
 
 .nav-item {
+    height: 30px;
+    line-height: 30px;
     position: relative;
 }
 
@@ -53,7 +55,8 @@
 }
 
 .nav-item-label {
-    padding: 5px 5px 5px 24px;
+    padding: 5px 5px 5px 34px;
+    vertical-align: middle;
 }
 
 .overlay {

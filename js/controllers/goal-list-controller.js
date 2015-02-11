@@ -9,12 +9,26 @@
 
         function ( $scope, $q, Goal ) {
             $scope.model = {
-                colors: [ ],
-                goals: Goal.query( ),
+                colors: { },
+                goals: [],
                 goal: {
                     title: ''
                 }
             };
+
+            var generateColors = function ( objects ) {
+                objects.forEach( function ( o ) {
+                    var canvas = document.createElement( 'canvas' );
+                    canvas.height = canvas.width = 24;
+                    canvas.getContext( '2d' ).fillRect( 0, 0, 24, 24 );
+                    $scope.model.colors[ o.objectId ] = canvas.toDataURL( );
+                } );
+                return objects;
+            };
+
+            Goal.query( ).$promise
+                .then( generateColors )
+                .then( function ( g ) { $scope.model.goals = g } );
 
             $scope.deleteGoals = function ( ) {
                 $q.all( $scope.model.goals.slice( ).map( function ( goal ) {
